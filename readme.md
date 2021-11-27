@@ -1,7 +1,7 @@
 # LERP : Label-dependent and event-guided interpretable disease risk prediction using EHRs
 
 ## This is the code for the LERP.
-
+![image](https://github.com/finnickniu/LERP/blob/main/IMG/LERP.png)
 ## Dataset
 
 1. The dataset used is MIMIC-III, you should download it from https://physionet.org/content/mimiciii/1.4/ first.
