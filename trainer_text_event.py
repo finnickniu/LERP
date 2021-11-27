@@ -125,7 +125,7 @@ def fit(epoch,model,train_iterator,test_iterator,fixed_label_embedding,fixed_tas
 
                 loss_v = criterion1(pred, y)
 
-                loss_c = calc_loss_c(c,criterion,model,y,device)
+                # loss_c = calc_loss_c(c,criterion,model,y,device)
   
                 # loss_t1 = torch.sum(-torch.log(nn.CosineSimilarity(dim=1, eps=1e-6)(weighted_event.squeeze(),text_pred.squeeze())))/3
 
@@ -135,7 +135,8 @@ def fit(epoch,model,train_iterator,test_iterator,fixed_label_embedding,fixed_tas
                 # pred = model(text_x,event_token,label_token,task_token,lab_x,length,fixed_label_embedding_batch,fixed_task_embedding_batch,time_stamp,Fixed,Flatten,mode='fusion')
                 # loss = criterion1(pred, y)
             ###################################### event  #################
-                loss = loss_v + loss_c
+                # loss = loss_v + loss_c
+                loss = loss_v
 
                 loss.backward(retain_graph=True)
                 optimizer.step()
@@ -147,11 +148,13 @@ def fit(epoch,model,train_iterator,test_iterator,fixed_label_embedding,fixed_tas
                 pred,c,text_label,weights,weighted_event,event_weight,text_event   = model(token_map,text_x,event_token,label_token,task_token,lab_x,length,fixed_label_embedding_batch,fixed_task_embedding_batch,time_stamp,Fixed,Flatten,mode='fusion')
 
                 loss_v = criterion1(pred, y)
-                loss_c = calc_loss_c(c,criterion,model,y,device)
+                # loss_c = calc_loss_c(c,criterion,model,y,device)
                 # loss_t1 = torch.sum(-torch.log(nn.CosineSimilarity(dim=1, eps=1e-6)(weighted_event.squeeze(),text_pred.squeeze())))/3
 
                 # loss = (1-ratio_granger_loss)*(loss_v + loss_c) + ratio_granger_loss*(loss_t1)
-                loss = loss_v + loss_c
+                # loss = loss_v + loss_c
+                loss = loss_v
+
             ###################################### event  #################
                 # pred = model(text_x,event_token,label_token,task_token,lab_x,length,fixed_label_embedding_batch,fixed_task_embedding_batch,time_stamp,Fixed,Flatten,mode='fusion')
                 # loss = criterion1(pred, y)
